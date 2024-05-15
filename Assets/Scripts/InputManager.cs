@@ -11,10 +11,6 @@ public class InputManager : MonoBehaviour
   private PlayerMotor motor;
   private PlayerLook look;
   // Start is called before the first frame update
-  void Start()
-  {
-    Cursor.visible = false;
-  }
 
   void Awake()
   {
