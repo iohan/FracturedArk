@@ -28,6 +28,7 @@ public class PlayerMotor : MonoBehaviour
   public void ProcessMove(Vector2 input)
   {
     isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
     if (isGrounded)
     {
       // Handle grounded movement
@@ -36,7 +37,6 @@ public class PlayerMotor : MonoBehaviour
 
       if (jumping)
       {
-        jumping = false;
         moveDirection.y = jumpHeight;
       }
 
@@ -56,15 +56,13 @@ public class PlayerMotor : MonoBehaviour
       moveDirection.y -= gravity * Time.deltaTime;
     }
 
+    jumping = false;
     // Move the character controller
     controller.Move(moveDirection * Time.deltaTime);
   }
 
   public void Jump()
   {
-    if (isGrounded)
-    {
-      jumping = true;
-    }
+    jumping = true;
   }
 }
